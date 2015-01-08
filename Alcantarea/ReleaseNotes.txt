@@ -1,0 +1,11 @@
+2015/01/08 1.0.2
+- now Alcantarea is free & open-sourced
+- added support for Visual Studio 2015 (preview)
+
+2014/02/10 1.0.1
+- bug fix: Alcantarea -> Start Debugging failed in some case if the project is in solution folders
+- bug fix: Alcantarea -> Start Debugging failed in some case if Configuration Properties -> Debugging -> Command is not $(TargetPath)
+- bug fix: Supported .obj files compiled with /bigobj
+
+2013/12/24 1.0.0
+- first public release

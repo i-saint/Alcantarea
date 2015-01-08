@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary 
+        format that VisualStudio will consume) has the ability to run a preprocessor 
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so 
+        it is possible to define includes and macros with the same syntax used 
+        in C++ files. Using this ability of the compiler here, we include some files 
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h" />
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h" />
+
+  <!--Definition of some VSCT specific constants. In this sample we use it for the IDs inside the guidOfficeIcon group. -->
+  <!--<Extern href="msobtnid.h" xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" />-->
+
+
+  <Symbols>
+    <GuidSymbol name="guidAlcantareaPkg" value="{76241999-3c86-47ee-ad8a-b50a3f8c7c4c}" />
+    <GuidSymbol name="guidAlcantareaCmdSet" value="{76241999-3c86-47ee-ad8a-b50a3f8c7c4d}">
+      <IDSymbol name="alcMenu" value="0x0100" />
+      <IDSymbol name="alcGroupStart" value="0x0101" />
+      <IDSymbol name="alcGroupEdit" value="0x0102" />
+      <IDSymbol name="alcGroupEtc" value="0x0103" />
+
+      <IDSymbol name="alcStartDebugging" value="0x0200" />
+      <IDSymbol name="alcApplyChange" value="0x0201" />
+      <IDSymbol name="alcSymbolFilter" value="0x0202" />
+      <IDSymbol name="alcReloadSymbols" value="0x0203" />
+      <IDSymbol name="alcLoadObjFiles" value="0x0204" />
+      <IDSymbol name="alcReloadObjFiles" value="0x0205" />
+      <IDSymbol name="alcOptions" value="0x0206" />
+      <IDSymbol name="alcToggleSuspend" value="0x0207" />
+      <IDSymbol name="alcAttachToDebugee" value="0x0208" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImageStart" value="{4a52a7c3-4670-4694-a889-90ea348f3bcf}">
+      <IDSymbol name="bmpStart" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImageApply" value="{4a52a7c3-4670-4694-a889-90ea348f3bd0}">
+      <IDSymbol name="bmpApply" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImageOption" value="{4a52a7c3-4670-4694-a889-90ea348f3bd1}">
+      <IDSymbol name="bmpOption" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImageFilter" value="{4a52a7c3-4670-4694-a889-90ea348f3bd2}">
+      <IDSymbol name="bmpFilter" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImageAttach" value="{4a52a7c3-4670-4694-a889-90ea348f3bd3}">
+      <IDSymbol name="bmpAttach" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImageSuspend" value="{4a52a7c3-4670-4694-a889-90ea348f3bd4}">
+      <IDSymbol name="bmpSuspend" value="1" />
+    </GuidSymbol>
+  </Symbols>
+
+
+  <KeyBindings>
+    <KeyBinding editor="guidVSStd97" guid="guidAlcantareaCmdSet" id="alcStartDebugging" key1="5" mod1="Shift Alt" />
+    <KeyBinding editor="guidVSStd97" guid="guidAlcantareaCmdSet" id="alcApplyChange" key1="7" mod1="Shift Alt" />
+    <KeyBinding editor="guidVSStd97" guid="guidAlcantareaCmdSet" id="alcSymbolFilter" key1="8" mod1="Shift Alt" />
+    <KeyBinding editor="guidVSStd97" guid="guidAlcantareaCmdSet" id="alcReloadObjFiles" key1="9" mod1="Shift Alt" />
+    <KeyBinding editor="guidVSStd97" guid="guidAlcantareaCmdSet" id="alcToggleSuspend" key1="0" mod1="Shift Alt" />
+  </KeyBindings>
+
+
+  <Commands package="guidAlcantareaPkg">
+    
+    <Menus>
+      <Menu guid="guidAlcantareaCmdSet" id="alcMenu" priority="0x700" type="Menu">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+        <Strings>
+          <ButtonText>Alcantarea</ButtonText>
+          <CommandName>Alcantarea</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <Groups>
+      <Group guid="guidAlcantareaCmdSet" id="alcGroupStart" priority="0x0600">
+        <Parent guid="guidAlcantareaCmdSet" id="alcMenu" />
+      </Group>
+      <Group guid="guidAlcantareaCmdSet" id="alcGroupEdit" priority="0x0600">
+        <Parent guid="guidAlcantareaCmdSet" id="alcMenu" />
+      </Group>
+      <Group guid="guidAlcantareaCmdSet" id="alcGroupEtc" priority="0x0600">
+        <Parent guid="guidAlcantareaCmdSet" id="alcMenu" />
+      </Group>
+    </Groups>
+
+
+    <Buttons>
+
+      <Button guid="guidAlcantareaCmdSet" id="alcStartDebugging" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupStart" />
+        <Icon guid="guidImageStart" id="bmpStart" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Start Debugging</ButtonText>
+          <CommandName>alcStartDebugging</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidAlcantareaCmdSet" id="alcAttachToDebugee" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupStart" />
+        <Icon guid="guidImageAttach" id="bmpAttach" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Attach to Debugged Process</ButtonText>
+          <CommandName>alcAttachToDebugee</CommandName>
+        </Strings>
+      </Button>
+
+      <Button guid="guidAlcantareaCmdSet" id="alcApplyChange" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEdit" />
+        <Icon guid="guidImageApply" id="bmpApply" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Apply Changes</ButtonText>
+          <CommandName>alcApplyChange</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidAlcantareaCmdSet" id="alcSymbolFilter" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEdit" />
+        <Icon guid="guidImageFilter" id="bmpFilter" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Symbol Filter</ButtonText>
+          <CommandName>alcSymbolFilter</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidAlcantareaCmdSet" id="alcToggleSuspend" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEdit" />
+        <Icon guid="guidImageSuspend" id="bmpSuspend" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Suspend/Resume Process</ButtonText>
+          <CommandName>alcToggleSuspend</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidAlcantareaCmdSet" id="alcLoadObjFiles" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEdit" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Load obj Files</ButtonText>
+          <CommandName>alcLoadObjFiles</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidAlcantareaCmdSet" id="alcReloadObjFiles" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEdit" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Reload Last Loaded obj Files</ButtonText>
+          <CommandName>alcReloadObjFiles</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidAlcantareaCmdSet" id="alcReloadSymbols" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEdit" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <Strings>
+          <ButtonText>Load Symbols</ButtonText>
+          <CommandName>alcReloadSymbols</CommandName>
+        </Strings>
+      </Button>
+
+      <Button guid="guidAlcantareaCmdSet" id="alcOptions" priority="0x0100" type="Button">
+        <Parent guid="guidAlcantareaCmdSet" id="alcGroupEtc" />
+        <Icon guid="guidImageOption" id="bmpOption" />
+        <Strings>
+          <ButtonText>Options</ButtonText>
+          <CommandName>alcOptions</CommandName>
+        </Strings>
+      </Button>
+
+    </Buttons>
+
+
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <!--  The bitmap id is defined in a way that is a little bit different from the others: 
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the 
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
+            inside a button definition. An important aspect of this declaration is that the element id 
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <Bitmap guid="guidImageStart" href="Resources\startwithoutdebugging_6556.png" usedList="bmpStart" />
+      <Bitmap guid="guidImageApply" href="Resources\Compile_191.png" usedList="bmpApply" />
+      <Bitmap guid="guidImageOption" href="Resources\gear_16xLG.png" usedList="bmpOption" />
+      <Bitmap guid="guidImageFilter" href="Resources\filter_16xLG.png" usedList="bmpFilter" />
+      <Bitmap guid="guidImageAttach" href="Resources\ProcessWindow_6545.png" usedList="bmpAttach" />
+      <Bitmap guid="guidImageSuspend" href="Resources\Breakall_6323.png" usedList="bmpSuspend" />
+
+    </Bitmaps>
+  </Commands>
+
+</CommandTable>
